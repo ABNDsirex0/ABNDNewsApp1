@@ -8,7 +8,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-class ArticlesLoader extends AsyncTaskLoader<ArrayList<Article>> {
+class ArticlesLoader extends AsyncTaskLoader<List<Article>> {
     public static final String LOG_TAG = ArticlesLoader.class.getName();
     String query;
 
@@ -18,7 +18,7 @@ class ArticlesLoader extends AsyncTaskLoader<ArrayList<Article>> {
     }
 
     @Override
-    public ArrayList<Article> loadInBackground() {
+    public List<Article> loadInBackground() {
         return DataUtils.getData(query);
     }
 

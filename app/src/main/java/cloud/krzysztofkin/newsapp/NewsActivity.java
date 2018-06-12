@@ -17,14 +17,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<ArrayList<Article>> {
+public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
     ArticlesAdapter articleListAdapter;
-    String QUERY_URL = "to jest query url";
+    private static final String QUERY_URL = "to jest query url";
     ProgressBar progressBar;
     TextView errorMessageView;
     ListView articleListView;
-    public static final String LOG_TAG = NewsActivity.class.getName();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +61,12 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<A
     }
 
     @Override
-    public Loader<ArrayList<Article>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
         return new ArticlesLoader(this, QUERY_URL);
     }
 
     @Override
-    public void onLoadFinished(Loader<ArrayList<Article>> loader, ArrayList<Article> articles) {
+    public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
         progressBar.setVisibility(View.GONE);
         articleListAdapter.clear();
         if (articles != null && !articles.isEmpty()) {
@@ -79,7 +77,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<A
     }
 
     @Override
-    public void onLoaderReset(Loader<ArrayList<Article>> loader) {
+    public void onLoaderReset(Loader<List<Article>> loader) {
         articleListAdapter.clear();
     }
 }
