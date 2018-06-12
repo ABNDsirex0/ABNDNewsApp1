@@ -58,7 +58,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         });
 
 
-
         //set connectivity manager and check network connection:
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -87,7 +86,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         progressBar.setVisibility(View.GONE);
         articleListAdapter.clear();
         if (articles != null && !articles.isEmpty()) {
-            Log.v("main","lista pełna");
+            Log.v("main", "lista pełna");
             articleListAdapter.addAll(articles);
         }
         errorMessageView.setText(R.string.no_data);

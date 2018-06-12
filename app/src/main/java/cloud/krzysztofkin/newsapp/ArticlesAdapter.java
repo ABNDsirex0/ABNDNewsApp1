@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 class ArticlesAdapter extends ArrayAdapter<Article> {
-    public ArticlesAdapter(@NonNull Context context, @NonNull ArrayList<Article> objects) {
+    ArticlesAdapter(@NonNull Context context, @NonNull List<Article> objects) {
         super(context, 0, objects);
     }
 
@@ -34,7 +34,7 @@ class ArticlesAdapter extends ArrayAdapter<Article> {
         TextView dateTextView = listItemView.findViewById(R.id.date_textView);
         TextView authorTextView = listItemView.findViewById(R.id.author_textView);
 
-        //get the artice at given position
+        //get the article at given position
         Article currentArticle = getItem(position);
 
         //set text to text views
@@ -42,7 +42,7 @@ class ArticlesAdapter extends ArrayAdapter<Article> {
         sectionTextView.setText(currentArticle.getSectionName());
         dateTextView.setText(currentArticle.getWebPublicationDate());
         authorTextView.setText(currentArticle.getAuthorName());
-        
+
         return listItemView;
     }
 }
