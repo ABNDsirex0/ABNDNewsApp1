@@ -16,7 +16,7 @@ public class DataUtils {
         //TODO tu prawdziwy return po implementacji pobierania
         ArrayList<Article> fakeData = new ArrayList<Article>();
         for(int i =0;i<10;i++) {
-            fakeData.add(new Article("webtitle "+i, "section name "+i, "author"+i, "date"+i, "url"+i));
+            fakeData.add(new Article("webtitle "+i, "section name "+i, "author"+i, "date"+i, "http://www.onet.pl/"));
         }
         return fakeData;
     }

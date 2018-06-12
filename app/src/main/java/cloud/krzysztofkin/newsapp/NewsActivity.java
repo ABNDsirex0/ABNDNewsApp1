@@ -3,13 +3,16 @@ package cloud.krzysztofkin.newsapp;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -41,6 +44,20 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         articleListAdapter = new ArticlesAdapter(NewsActivity.this, new ArrayList<Article>());
         articleListView.setAdapter(articleListAdapter);
         articleListView.setEmptyView(errorMessageView);
+        articleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Article currentArticle = articleListAdapter.getItem(position);
+                // Convert the String URL into a URI object (to pass into the Intent constructor)
+                Uri uri = Uri.parse(currentArticle.getWebUrl());
+                // Create a new intent to view the URI
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, uri);
+                // Send the intent to launch a new activity
+                startActivity(websiteIntent);
+            }
+        });
+
+
 
         //set connectivity manager and check network connection:
         ConnectivityManager cm =
