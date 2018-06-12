@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ArticlesLoader extends AsyncTaskLoader<List<Article>> {
-    public static final String LOG_TAG = ArticlesLoader.class.getName();
-    String query;
+    private String query;
 
-    public ArticlesLoader(Context context, String query_url) {
+    ArticlesLoader(Context context, String queryURL) {
         super(context);
-        query = query_url;
+        query = queryURL;
     }
 
     @Override

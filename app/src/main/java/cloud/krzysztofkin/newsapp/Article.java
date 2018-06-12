@@ -1,13 +1,13 @@
 package cloud.krzysztofkin.newsapp;
 
 public class Article {
-    String webTitle;
-    String sectionName;
-    String authorName;
-    String webPublicationDate;
-    String webUrl;
+    private String webTitle;
+    private String sectionName;
+    private String authorName;
+    private String webPublicationDate;
+    private String webUrl;
 
-    public Article(String webTitle, String sectionName, String authorName, String webPublicationDate, String webUrl) {
+    Article(String webTitle, String sectionName, String authorName, String webPublicationDate, String webUrl) {
         this.webTitle = webTitle;
         this.sectionName = sectionName;
         this.authorName = authorName;
