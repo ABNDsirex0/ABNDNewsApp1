@@ -5,7 +5,11 @@ import android.content.Context;
 
 import java.util.List;
 
+/**
+ * Loader for downloading data in the background
+ */
 class ArticlesLoader extends AsyncTaskLoader<List<Article>> {
+
     private String query;
 
     ArticlesLoader(Context context, String queryURL) {

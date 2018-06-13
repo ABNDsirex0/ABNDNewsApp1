@@ -10,7 +10,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -86,7 +85,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         progressBar.setVisibility(View.GONE);
         articleListAdapter.clear();
         if (articles != null && !articles.isEmpty()) {
-            Log.v("main", "lista pełna");
             articleListAdapter.addAll(articles);
         }
         errorMessageView.setText(R.string.no_data);

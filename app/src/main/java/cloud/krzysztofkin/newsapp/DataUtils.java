@@ -18,10 +18,26 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Tools for getting data from web and parsing JSON
+ */
 public class DataUtils {
     private static final String LOG_TAG = DataUtils.class.getSimpleName();
 
-    public static ArrayList<Article> getData(String queryString) {
+    /**
+     * private constructor to hide the implicit public one
+     */
+    private DataUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    /**
+     * Get data from web address
+     *
+     * @param queryString api url for getting data
+     * @return ArrayList with Articles
+     */
+    public static List<Article> getData(String queryString) {
         // Create URL object
         URL url = createUrl(queryString);
 
@@ -33,10 +49,7 @@ public class DataUtils {
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
-        ArrayList<Article> articles = extractArticlesFromJson(jsonResponse);
-
-        //return getFakeData(queryString);
-        return articles;
+        return extractArticlesFromJson(jsonResponse);
     }
 
     private static ArrayList<Article> extractArticlesFromJson(String jsonResponse) {
@@ -48,10 +61,12 @@ public class DataUtils {
         String webUrl;
         Article currentArticle;
 
-        if (TextUtils.isEmpty(jsonResponse)) {
-            return null;
-        }
         ArrayList<Article> articles = new ArrayList<>();
+        //if response is empty return empty list
+        if (TextUtils.isEmpty(jsonResponse)) {
+            return articles;
+        }
+
         try {
             JSONObject baseRequest = new JSONObject(jsonResponse);
             baseRequest = baseRequest.getJSONObject("response");
@@ -145,21 +160,4 @@ public class DataUtils {
         }
         return url;
     }
-
-    public static ArrayList<Article> getFakeData(String queryURL) {
-        //TODO wywal try catch i sleep po implementacji pobierania
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Log.v("DataUtils", queryURL);
-        //TODO tu prawdziwy return po implementacji pobierania
-        ArrayList<Article> fakeData = new ArrayList<Article>();
-        for (int i = 0; i < 10; i++) {
-            fakeData.add(new Article("webtitle " + i, "section name " + i, "author" + i, "date" + i, "http://www.onet.pl/"));
-        }
-        return fakeData;
-    }
-
 }

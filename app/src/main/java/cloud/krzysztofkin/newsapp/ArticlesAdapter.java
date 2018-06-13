@@ -11,7 +11,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * ListView adapter used by NewsActivity
+ **/
 class ArticlesAdapter extends ArrayAdapter<Article> {
+    /**
+     * @param context context
+     * @param objects objects to represent in the ListView.
+     */
     ArticlesAdapter(@NonNull Context context, @NonNull List<Article> objects) {
         super(context, 0, objects);
     }
@@ -43,6 +50,7 @@ class ArticlesAdapter extends ArrayAdapter<Article> {
         dateTextView.setText(currentArticle.getWebPublicationDate());
         authorTextView.setText(currentArticle.getAuthorName());
 
+        //return filled View
         return listItemView;
     }
 }
