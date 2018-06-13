@@ -22,7 +22,7 @@ import java.util.List;
 
 public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
     ArticlesAdapter articleListAdapter;
-    private static final String QUERY_URL = "to jest query url";
+    private static final String QUERY_URL = "https://content.guardianapis.com/search?api-key=test";
     ProgressBar progressBar;
     TextView errorMessageView;
     ListView articleListView;

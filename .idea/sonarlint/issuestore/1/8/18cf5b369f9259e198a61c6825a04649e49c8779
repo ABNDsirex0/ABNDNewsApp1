@@ -1,3 +1,0 @@
-
-Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Ì‰–‚¿,
-“squid:S1319"rThe type of the "objects" object should be an interface such as "List" rather than the implementation "ArrayList".(»”Úùýÿÿÿÿ8Ì‰–‚¿,
